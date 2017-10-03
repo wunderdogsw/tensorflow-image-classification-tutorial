@@ -1,7 +1,7 @@
 # How-to: Image classification with TensorFlow, using Inception v3 neural network
 
 This is a tutorial on how to do image classification using TensorFlow and Inception v3 neural network.
-The tutorial is based on ready-made scripts and instructions by TensorFlow authors. The purpose of this tutorial is to put the whole pipe-line together in a more understandable way.
+The tutorial is based on ready-made scripts and instructions by TensorFlow authors. The purpose of this tutorial is to put the whole pipeline together in a more understandable way.
 Basic knowledge of Python, machine learning, and TensorFlow is a plus.
 
 Note: these instructions won't go much in depth to how everything works.
