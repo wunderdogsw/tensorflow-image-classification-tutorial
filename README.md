@@ -342,7 +342,11 @@ Can you, for example, make an inception model that can recognize traffic signs?
 
 Want to learn more? Read these:
 https://cloud.google.com/ml-engine/docs/how-tos/
+
 https://www.tensorflow.org/get_started/
+
 https://www.tensorflow.org/programmers_guide/
+
 https://www.tensorflow.org/tutorials/
+
 https://www.tensorflow.org/deploy/
