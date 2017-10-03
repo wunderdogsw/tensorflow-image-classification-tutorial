@@ -23,7 +23,7 @@ Another submodule is Tensorflow Models. We will be using "Tensorflow Slim" in th
 ## Install Virtualenv, TensorFlow, Bazel
 Instructions:
 
-"Installing from source": https://github.com/tensorflow/serving/blob/master/tensorflow\_serving/g3doc/setup.md
+"Installing from source": https://github.com/tensorflow/serving/blob/master/tensorflow_serving/g3doc/setup.md
 
 TensorFlow: https://www.tensorflow.org/install/
 Note: If you are using Mac OS X, please use virtualenv, it makes life easier.
@@ -31,7 +31,7 @@ Virtualenv: https://virtualenv.pypa.io/en/stable/
 
 Bazel: https://docs.bazel.build/versions/master/install.html
 
-Run TensorFlow configure script and build bazel bins in tensorflow\_serving/example/
+Run TensorFlow configure script and build bazel bins in tensorflow_serving/example/
 
     $ cd serving/tensorflow
     :/serving/tensorflow $ ./configure
@@ -45,7 +45,7 @@ Note: At this point the instructions assume you have everything installed correc
 
 Inception v3 is a deep convolutional neural network for image classification trained with ImageNet dataset which has 1000 classes.
 Read more:
-https://www.tensorflow.org/tutorials/image\_recognition
+https://www.tensorflow.org/tutorials/image_recognition
 https://arxiv.org/abs/1512.00567
 
 We will be fine-tuning the inception v3 to properly classify images with five different classes.
@@ -70,7 +70,7 @@ Download and convert the flowers dataset with a python script that came with Sli
         --dataset_name=flowers \
         --dataset_dir="${DATA_DIR}"
 
-Check that DATA\_DIR actually contains stuff
+Check that DATA_DIR actually contains stuff
 
     $ ls ${DATA_DIR}
     flowers_train-00000-of-00005.tfrecord
@@ -177,15 +177,15 @@ Now we need to make the model deployable. After this part, you'll be able to run
 
 ## Creating TensorFlow Saved Model
 
-Assuming you are in serving directory, run the bazel-bin **inception\_saved\_model**
+Assuming you are in serving directory, run the bazel-bin **inception_saved_model**
 
     $ mkdir ${TRAIN_DIR}/inception-export
     :serving $ bazel-bin/tensorflow_serving/example/inception_saved_model --checkpoint_dir=${TRAIN_DIR} --output_dir=${TRAIN_DIR}/inception-export
 
-Most likely you will get errors. The included **inception\_saved\_model.py** script is not meant to be run with flowers dataset fine-tuned inception model.
-In order to fix this, I have made changed to the **inception\_saved\_model.py**
+Most likely you will get errors. The included **inception_saved_model.py** script is not meant to be run with flowers dataset fine-tuned inception model.
+In order to fix this, I have made changed to the **inception_saved_model.py**
 
-Changes made to tensorflow\_serving/example/inception\_saved\_model.py
+Changes made to tensorflow_serving/example/inception_saved_model.py
 
     diff --git a/tensorflow_serving/example/inception_saved_model.py b/tensorflow_serving/example/inception_saved_model.py
     index 86b20c4..4042b5b 100644
@@ -249,8 +249,8 @@ Changes made to tensorflow\_serving/example/inception\_saved\_model.py
              #   /my-favorite-path/imagenet_train/model.ckpt-0,
 
 These fixed the errors for me.
-You can find my modified version of **inception\_saved\_model.py** included in this git repository.
-You will also need the **'flowers\_synsets.txt'** and **'flowers\_metadata.txt'**. They can be found in the same directory.
+You can find my modified version of **inception_saved_model.py** included in this git repository.
+You will also need the **'flowers_synsets.txt'** and **'flowers_metadata.txt'**. They can be found in the same directory.
 
 Run the above bazel-bin command again.
 Result should look something like this:
@@ -265,7 +265,7 @@ Result should look something like this:
 
 Next we will run tensorflow model server locally, serving the exported fine-tuned Inception model
 
-Run the bazel-bin of **tensorflow\_model\_server**
+Run the bazel-bin of **tensorflow_model_server**
 
     :serving $ bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=9000 --model_name=inception --model_base_path=/tmp/flowers-models/inception_v3/inception-export/
     2017-10-02 16:44:00.677688: I tensorflow_serving/model_servers/main.cc:147] Building single TensorFlow model file config:  model_name: inception model_base_path: /tmp/flowers-models/inception_v3/inception-export/
@@ -290,7 +290,7 @@ This downloads a photo of tulips.
 
     wget https://cloud.google.com/blog/big-data/2016/12/images/148114735559140/image-classification-4.png
 
-Next, run the bazel-bin for inception\_client
+Next, run the bazel-bin for inception_client
 
     :serving $ bazel-bin/tensorflow_serving/example/inception_client --server=0.0.0.0:9000 --image=/<absolute>/<path>/<to>/image-classification-4.png
 
@@ -342,7 +342,7 @@ Can you, for example, make an inception model that can recognize traffic signs?
 
 Want to learn more? Read these:
 https://cloud.google.com/ml-engine/docs/how-tos/
-https://www.tensorflow.org/get\_started/
-https://www.tensorflow.org/programmers\_guide/
+https://www.tensorflow.org/get_started/
+https://www.tensorflow.org/programmers_guide/
 https://www.tensorflow.org/tutorials/
 https://www.tensorflow.org/deploy/
